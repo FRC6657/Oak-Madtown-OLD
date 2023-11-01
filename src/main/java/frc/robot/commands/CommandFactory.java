@@ -34,7 +34,7 @@ public class CommandFactory {
                 -MathUtil.applyDeadband(_xInput.getAsDouble(), DriverConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(_yInput.getAsDouble(), DriverConstants.kDriveDeadband),
                 MathUtil.applyDeadband(_rInput.getAsDouble(), DriverConstants.kDriveDeadband),
-                true, 
+                false, 
                 RobotBase.isReal()
             ),
             drivetrain

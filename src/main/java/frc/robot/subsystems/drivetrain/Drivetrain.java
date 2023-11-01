@@ -24,6 +24,7 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.FieldObject2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.drivetrain.modules.SwerveModule;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -32,33 +33,33 @@ public class Drivetrain extends SubsystemBase {
 
   // Create MAXSwerveModules
   private final SwerveModule frontLeft = SwerveModule.create(
-      DriveConstants.kFrontLeftDrivingCanId,
-      DriveConstants.kFrontLeftTurningCanId,
+      Constants.CAN.kFrontLeftDrivingCanId,
+      Constants.CAN.kFrontLeftTurningCanId,
       DriveConstants.kFrontLeftChassisAngularOffset
   );
 
   private final SwerveModule frontRight = SwerveModule.create(
-      DriveConstants.kFrontRightDrivingCanId,
-      DriveConstants.kFrontRightTurningCanId,
-      DriveConstants.kFrontRightChassisAngularOffset
+    Constants.CAN.kFrontRightDrivingCanId,
+    Constants.CAN.kFrontRightTurningCanId,
+    DriveConstants.kFrontRightChassisAngularOffset
   );
 
   private final SwerveModule backLeft = SwerveModule.create(
-      DriveConstants.kBackLeftDrivingCanId,
-      DriveConstants.kBackLeftTurningCanId,
+      Constants.CAN.kBackLeftDrivingCanId,
+      Constants.CAN.kBackLeftTurningCanId,
       DriveConstants.kBackLeftChassisAngularOffset
   );
 
   private final SwerveModule backRight = SwerveModule.create(
-      DriveConstants.kBackRightDrivingCanId,
-      DriveConstants.kBackRightTurningCanId,
+      Constants.CAN.kBackRightDrivingCanId,
+      Constants.CAN.kBackRightTurningCanId,
       DriveConstants.kBackRightChassisAngularOffset
   );
 
   private final List<SwerveModule> modules = List.of(frontLeft, frontRight, backLeft, backRight);
 
   // The gyro sensor
-  private final WPI_Pigeon2 gyro = new WPI_Pigeon2(DriveConstants.kPigeon2CanId);
+  private final WPI_Pigeon2 gyro = new WPI_Pigeon2(Constants.CAN.kPigeon2CanId);
   private final BasePigeonSimCollection gyroSim = gyro.getSimCollection();
 
   // Slew rate filter variables for controlling lateral acceleration

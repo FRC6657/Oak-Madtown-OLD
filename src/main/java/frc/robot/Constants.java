@@ -24,6 +24,25 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+  public static final class CAN {
+    
+    //fix
+    public static final int kFrontLeftDrivingCanId = 2;
+    public static final int kBackLeftDrivingCanId = 4;
+    public static final int kFrontRightDrivingCanId = 3;
+    public static final int kBackRightDrivingCanId = 5;
+
+    public static final int kFrontLeftTurningCanId = 6;
+    public static final int kBackLeftTurningCanId = 8;
+    public static final int kFrontRightTurningCanId = 7;
+    public static final int kBackRightTurningCanId = 9;
+
+    public static final int kPigeon2CanId = 10;
+    public static final int kClaw = 11;
+
+  }
+
   public static final class DriveConstants {
 
     // Driving Parameters - Note that these are not the maximum capable speeds of
@@ -36,10 +55,10 @@ public final class Constants {
     public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
 
     // Chassis configuration
-    public static final double kTrackWidth = Units.inchesToMeters(24.5);
+    public static final double kTrackWidth = Units.inchesToMeters(25.5);
 
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(24.5);
+    public static final double kWheelBase = Units.inchesToMeters(25.5);
 
     public static final Translation2d[] kModuleOffset = {
       new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -52,24 +71,10 @@ public final class Constants {
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(kModuleOffset);
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
+    public static final double kFrontLeftChassisAngularOffset = 0;
     public static final double kFrontRightChassisAngularOffset = 0;
-    public static final double kBackLeftChassisAngularOffset = Math.PI;
-    public static final double kBackRightChassisAngularOffset = Math.PI / 2;
-
-    // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 1;
-    public static final int kBackLeftDrivingCanId = 3;
-    public static final int kFrontRightDrivingCanId = 5;
-    public static final int kBackRightDrivingCanId = 7;
-
-    public static final int kFrontLeftTurningCanId = 2;
-    public static final int kBackLeftTurningCanId = 4;
-    public static final int kFrontRightTurningCanId = 6;
-    public static final int kBackRightTurningCanId = 8;
-
-    //Pigeon CanID
-    public static final int kPigeon2CanId = 9;
+    public static final double kBackLeftChassisAngularOffset = 0;
+    public static final double kBackRightChassisAngularOffset = 0;
 
     public static final boolean kGyroReversed = false;
   }

@@ -4,6 +4,7 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -32,7 +33,7 @@ public class Robot extends TimedRobot {
     //Set the default command for the drivetrain to allow for teleop control
     drivetrain.setDefaultCommand(
       commandFactory.TeleopSwerve(
-        () ->- driveController.getLeftY(),
+        () -> -driveController.getLeftY(),
         () -> driveController.getLeftX(),
         () -> -driveController.getRightX()
       )
