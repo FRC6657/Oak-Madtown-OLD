@@ -10,7 +10,6 @@ import frc.robot.Constants.DriverConstants;
 import frc.robot.commands.CommandFactory;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 
-
 public class Robot extends TimedRobot {
 
   //Subsystems
@@ -29,14 +28,21 @@ public class Robot extends TimedRobot {
   public void robotInit(){
 
     //Set the default command for the drivetrain to allow for teleop control
-    drivetrain.setDefaultCommand(
-      commandFactory.TeleopSwerve(
-        () -> -driveController.getLeftY(),
-        () -> driveController.getLeftX(),
-        () -> 0
-      )
-    );
+  
+    // drivetrain.setDefaultCommand(
+    //   commandFactory.TeleopSwerve(
+    //     () -> -driveController.getLeftY(),
+    //     () -> driveController.getLeftX(),
+    //     () -> 0
+    //   )
+    // );
 
+    drivetrain.setDefaultCommand(
+      commandFactory.controlOneModule(
+        () -> -driveController.getLeftY(),
+        () -> driveController.getLeftX(), 
+        () -> driveController.getRightX())
+    );
   }
 
   @Override

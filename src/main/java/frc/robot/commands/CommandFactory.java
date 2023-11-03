@@ -40,4 +40,15 @@ public class CommandFactory {
         );
     }
 
+    public Command controlOneModule(DoubleSupplier _xInput, DoubleSupplier _yInput, DoubleSupplier _rInput){
+        return new RunCommand(
+            () -> drivetrain.moduleControl(
+                MathUtil.applyDeadband(_xInput.getAsDouble(), DriverConstants.kDriveDeadband),
+                MathUtil.applyDeadband(_yInput.getAsDouble(), DriverConstants.kDriveDeadband),
+                MathUtil.applyDeadband(_rInput.getAsDouble(), DriverConstants.kDriveDeadband)
+            ),
+            drivetrain        
+        );
+    }
+
 }

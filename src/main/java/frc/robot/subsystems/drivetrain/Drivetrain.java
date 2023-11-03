@@ -5,10 +5,8 @@
 package frc.robot.subsystems.drivetrain;
 
 import java.util.List;
-
 import com.ctre.phoenix.sensors.BasePigeonSimCollection;
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
-
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.filter.SlewRateLimiter;
@@ -205,6 +203,29 @@ public class Drivetrain extends SubsystemBase {
     backLeft.setDesiredState(swerveModuleStates[2]);
     backRight.setDesiredState(swerveModuleStates[3]);
   
+  }
+
+  public void moduleControl(double _xSpeed, double _ySpeed, double _rot) {
+    
+    _xSpeed = MathUtil.clamp(_xSpeed, -1, 1);
+    _ySpeed = MathUtil.clamp(_ySpeed, -1, 1);
+    _rot = MathUtil.clamp(_rot, -1, 1);
+
+    double xSpeedCommanded = _xSpeed;
+    double ySpeedCommanded = _ySpeed;
+    double currentRotation = _rot;
+
+    double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double rotDelivered = currentRotation * DriveConstants.kMaxAngularSpeed;
+
+    var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
+      new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered)
+    );
+
+    //Can be adjusted for whichever module needs to be controlled independently 
+    backLeft.setDesiredState(swerveModuleStates[2]);
+
   }
 
   /**
