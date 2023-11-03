@@ -5,7 +5,6 @@
 package frc.robot;
 
 import com.revrobotics.CANSparkMax.IdleMode;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -71,10 +70,10 @@ public final class Constants {
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(kModuleOffset);
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset = 0;
-    public static final double kFrontRightChassisAngularOffset = 0;
+    public static final double kFrontLeftChassisAngularOffset = Math.PI / 2;
+    public static final double kFrontRightChassisAngularOffset = Math.PI;
     public static final double kBackLeftChassisAngularOffset = 0;
-    public static final double kBackRightChassisAngularOffset = 0;
+    public static final double kBackRightChassisAngularOffset = -Math.PI / 2;
 
     public static final boolean kGyroReversed = false;
   }
