@@ -29,20 +29,14 @@ public class Robot extends TimedRobot {
 
     //Set the default command for the drivetrain to allow for teleop control
   
-    // drivetrain.setDefaultCommand(
-    //   commandFactory.TeleopSwerve(
-    //     () -> -driveController.getLeftY(),
-    //     () -> driveController.getLeftX(),
-    //     () -> 0
-    //   )
-    // );
-
     drivetrain.setDefaultCommand(
-      commandFactory.controlOneModule(
-        () -> -driveController.getLeftY(),
-        () -> driveController.getLeftX(), 
-        () -> driveController.getRightX())
+      commandFactory.TeleopSwerve(
+        () -> driveController.getLeftY(),
+        () -> driveController.getLeftX(),
+        () -> -driveController.getRightX()
+      )
     );
+
   }
 
   @Override
